@@ -10,37 +10,61 @@ With given G, player can rearrange the elements with any possible arrangement fo
 Example flow, 
 
 1. 0 combos
+
 AAACDF
+
 BDCCEF
+
 BDEEEE
+
 BBBCDF
+
 CDAAAF
 
 2. 4 combos
+
 AAACDF
+
 BDCCEF
+
 BDEEEE
+
 BBBCDF
+
 CDAAAF
 
+
 XXXXXX
+
 XXXXXF
+
 XDXCDF
+
 XDXCEF
+
 CDCCDF
 
 3. 4 + 3, 7 combos total
 
 XXXXXX
+
 XXXXXF
+
 XDXCDF
+
 XDXCEF
+
 CDCCDF
 
+
 XXXXXX
+
 XXXXXX
+
 XXXXDX
+
 XXXXEX
+
 CXCXDX
 
 The goal is to find the best initial arrangement in order to get highest possible number of combos with either approach from below:
@@ -60,9 +84,13 @@ From here we can further simplify the problem. Given that we can relocate the el
 Note that above algorithm is only suitable when it happens to be a relatively even distribution. When a single element has a total number = 15, it reaches its maximum combos, which is 5. See below as an example,
 
 AXAXAA
+
 AXAXAA
+
 AXAXAA
+
 XXXXXX
+
 AAAXXX
 
 When we try to add A on the into the grid, it will not increase the no, of combos but with a possibility to connect the matches and hence reduce the number of combos. 
@@ -72,9 +100,13 @@ When number of A >= 21, there will only be 9 or less free spaces for us to inser
 Number of A = 20, example grid:
 
 AXAXAA
+
 AXAXAA
+
 AXAXAA
+
 XAXAXX
+
 AAAAAA
 
 
