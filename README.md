@@ -9,7 +9,7 @@ With given G, player can rearrange the elements with any possible arrangement fo
 
 Example flow, 
 
-1. 
+1. 0 combos
 AAACDF
 BDCCEF
 BDEEEE
