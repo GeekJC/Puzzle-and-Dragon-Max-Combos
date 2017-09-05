@@ -1,8 +1,10 @@
 import numpy as np
 import itertools
 
+
 def create_empty_grid():
     return np.full((5, 6), -1)
+
 
 def find_score(grid):
     matches = []
@@ -72,7 +74,7 @@ def find_score(grid):
 
 
 def get_element_numbers(grid):
-    numbers = [0,0,0,0,0,0]
+    numbers = [0, 0, 0, 0, 0, 0]
     for x in range(0, 5):
         for y in range(0, 6):
             element = grid[x][y]
@@ -80,28 +82,81 @@ def get_element_numbers(grid):
 
     return numbers
 
+
 def find_score_in_simple_way(grid):
     numbers = [n / 3 for n in get_element_numbers(grid)]
     return sum(numbers)
 
 
 def all_grid_combinations(grid):
-    return set(itertools.permutations(grid.ravel(), 30))
+    gen = itertools.product(grid.ravel(), 30)
+    s = set()
 
-#testing use
+    # for i in gen:
+    #     if i not in s:
+    #         print i  # or do anything else
+    #     # if some_cond: break
+    #         s.add(i)
+
+
+def dfs(nums, used, lst, res):
+    if len(lst) == len(nums):
+        print lst
+        res.append(lst)
+        return
+
+    for i in range(0, len(nums)):
+        if used[i]:
+            continue
+        if i > 0 and nums[i - 1] == nums[i] and not used[i - 1]:
+            continue
+        used[i] = True
+        lst[i].append(nums[i])
+        dfs(nums, used, lst, res)
+        used[i] = False
+        lst.remove(len(lst) - 1)
+
+def test1(nums):
+    res = [[]]
+    used = [False for i in range(30)]
+    lst = [0 for i in range(30)]
+    dfs(nums, used,lst,res)
+
+# public
+# void
+# dfs(int[]
+# nums, boolean[]
+# used, List < Integer > list, List < List < Integer >> res){
+# if (list.size() == nums.length)
+# {
+#     res.add(new
+# ArrayList < Integer > (list));
+# return;
+# }
+# for (int i=0;i < nums.length;i++){
+# if (used[i]) continue;
+# if (i > 0 & & nums[i - 1] == nums[i] & & !used[i-1]) continue;
+# used[i] = true;
+# list.add(nums[i]);
+# dfs(nums, used, list, res);
+# used[i] = false;
+# list.remove(list.size() - 1);
+# }
+# }
+
+# testing use
 
 grid2 = np.array([[0, 0, 1, 1, 1, 1],
-         [0, 0, 1, 0, 0, 0],
-         [0, 0, 1, 0, 0, 0],
-         [0, 0, 0, 0, 0, 0],
-         [0, 0, 0, 0, 0, 0]
-         ])
+                  [0, 0, 1, 0, 0, 0],
+                  [0, 0, 1, 0, 0, 0],
+                  [0, 0, 0, 0, 0, 0],
+                  [0, 0, 0, 0, 0, 0]
+                  ])
 
 print (grid2)
 find_score(grid2)
 print get_element_numbers(grid2)
 print (find_score_in_simple_way(grid2))
-
 
 grid = np.random.randint(6, size=(5, 6))
 
@@ -110,5 +165,5 @@ find_score(grid)
 print get_element_numbers(grid)
 print (find_score_in_simple_way(grid))
 
-print (all_grid_combinations(grid2))
-
+nums = np.sort(grid.flatten())
+test1(nums)
