@@ -75,38 +75,3 @@ The goal is to find the best initial arrangement in order to get highest possibl
 *Reference: http://pad.wikia.com/wiki/Game_Mechanics
 
 
-Analyzing the problem:
-
-With above requirements, we can easily found that the max. combos for each grid will only be 10. Because the will only be 6 * 5 = 30 of elements, and in most ideal case we can destroy the elements with 3 consecutive elements, which is equal to 30 / 3 = 10. 
-
-From here we can further simplify the problem. Given that we can relocate the elements with any arrangement we want, the initial arrangement can’t provide useful information for us now. All we need to know is the number of different elements. Take above pattern as an example, we can simplify it to a 1-D array A: {6, 5, 5, 5, 5, 4}, which equals to the total numbers of the array {A, B, C, D, E, F}. Since there are no possible ways to achieve higher combos with insufficient elements, we can simply find the sum of A % 3, which is 2 + 1 + 1 + 1 + 1 + 1 = 7 in this case. 
-
-Note that above algorithm is only suitable when it happens to be a relatively even distribution. When a single element has a total number = 15, it reaches its maximum combos, which is 5. See below as an example,
-
-AXAXAA
-
-AXAXAA
-
-AXAXAA
-
-XXXXXX
-
-AAAXXX
-
-When we try to add A on the into the grid, it will not increase the no, of combos but with a possibility to connect the matches and hence reduce the number of combos. 
-
-When number of A >= 21, there will only be 9 or less free spaces for us to insert the A, that will not be possible to not connect any existing matches. Therefore, starting from A = 21, the combos will decrease with the rise of number of A.
-
-Number of A = 20, example grid:
-
-AXAXAA
-
-AXAXAA
-
-AXAXAA
-
-XAXAXX
-
-AAAAAA
-
-
