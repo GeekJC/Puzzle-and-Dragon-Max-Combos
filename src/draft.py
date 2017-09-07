@@ -101,7 +101,6 @@ def all_grid_combinations(grid):
 
 def dfs(nums, used, lst, res):
     if len(lst) == len(nums):
-        print lst
         res.append(lst)
         return
 
@@ -122,28 +121,6 @@ def test1(nums):
     lst = [0 for i in range(30)]
     dfs(nums, used,lst,res)
 
-# public
-# void
-# dfs(int[]
-# nums, boolean[]
-# used, List < Integer > list, List < List < Integer >> res){
-# if (list.size() == nums.length)
-# {
-#     res.add(new
-# ArrayList < Integer > (list));
-# return;
-# }
-# for (int i=0;i < nums.length;i++){
-# if (used[i]) continue;
-# if (i > 0 & & nums[i - 1] == nums[i] & & !used[i-1]) continue;
-# used[i] = true;
-# list.add(nums[i]);
-# dfs(nums, used, list, res);
-# used[i] = false;
-# list.remove(list.size() - 1);
-# }
-# }
-
 # testing use
 
 grid2 = np.array([[0, 0, 1, 1, 1, 1],
@@ -155,14 +132,14 @@ grid2 = np.array([[0, 0, 1, 1, 1, 1],
 
 print (grid2)
 find_score(grid2)
-print get_element_numbers(grid2)
+print (get_element_numbers(grid2))
 print (find_score_in_simple_way(grid2))
 
 grid = np.random.randint(6, size=(5, 6))
 
 print(grid)
 find_score(grid)
-print get_element_numbers(grid)
+print (get_element_numbers(grid))
 print (find_score_in_simple_way(grid))
 
 nums = np.sort(grid.flatten())
